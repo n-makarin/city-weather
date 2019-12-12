@@ -1,3 +1,4 @@
+import * as Types from '@/types/store/city'
 import VueGeolocation from 'vue-browser-geolocation'
 const geolocation: any = VueGeolocation
 
@@ -5,18 +6,18 @@ export default {
   namespaced: true,
   state: {
     coordinates: {
-      lat: null,
-      lng: null
+      lat: 0,
+      lng: 0
     }
   },
   mutations: {
-    SET_COORDINATES (store: any, coordinates: any) {
+    SET_COORDINATES (store: any, coordinates: Types.Coordinates) {
       store.coordinates = coordinates
     }
   },
   actions: {
     getCoordinates ({ commit }: any): void {
-      geolocation.getLocation().then((coordinates: any) => {
+      geolocation.getLocation().then((coordinates: Types.Coordinates) => {
         commit('SET_COORDINATES', coordinates)
       })
     }
