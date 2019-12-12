@@ -16,11 +16,13 @@ export default {
   },
   computed: {
     ...mapGetters({
-      coordinates: 'city/coordinates'
+      city: 'city/data'
     })
   },
-  created () {
-    this.$store.dispatch('city/getCoordinates')
+  mounted () {
+    this.$nextTick(async () => {
+      await this.$store.dispatch('city/getCityNameByCoordinates')
+    })
   }
 }
 </script>
