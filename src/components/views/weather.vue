@@ -1,27 +1,36 @@
 <template>
   <div class="weather">
     <div class="weather__description weather__item">
-      Description: {{ description }}
-    </div>
-    <div class="weather__rain weather__item">
-      <span>Rain: </span>
-      <span>{{ rain ? rain : 'no' }}</span>
-    </div>
-    <div class="weather__snow weather__item">
-      <span>Snow: </span>
-      <span>{{ snow ? snow : 'no' }}</span>
+      <span>Description: </span>
+      <span class="weather__result">{{ description }}</span>
     </div>
     <div v-if="temp" class="weather__temp weather__item">
-      <div class="weather__real">Temperature: {{ temp.tepm }}</div>
-      <div class="weather__feels-like">Feels like: {{ temp.feelsLike }}</div>
+      <div class="weather__real">
+        <span>Temperature: </span>
+        <span class="weather__result">{{ temp.tepm }}</span>
+      </div>
+      <div class="weather__feels-like">
+        <span>Feels like: </span>
+        <span class="weather__result">{{ temp.feelsLike }}</span>
+      </div>
     </div>
     <div v-if="wind" class="weather__wind weather__item">
       <div class="weather__feels-speed">
-        Wind speed: {{ wind.speed }}
+        <span>Wind speed: </span>
+        <span class="weather__result">{{ wind.speed }}</span>
       </div>
       <div class="weather__dir">
-        Wind direction: {{ wind.dir }}
+        <span>Wind direction: </span>
+        <span class="weather__result">{{ wind.dir }}</span>
       </div>
+    </div>
+    <div class="weather__rain weather__item">
+      <span>Rain: </span>
+      <span class="weather__result">{{ rain ? rain : 'no' }}</span>
+    </div>
+    <div class="weather__snow weather__item">
+      <span>Snow: </span>
+      <span class="weather__result">{{ snow ? snow : 'no' }}</span>
     </div>
   </div>
 </template>
@@ -58,13 +67,15 @@ export default Vue.extend({
 <style scoped lang="scss">
 .weather {
   &__item {
-    margin-bottom: 5px;
-    line-height: 1.5;
+    line-height: 1.8;
   }
   &__description {
     &::first-letter {
       text-transform: uppercase
     }
+  }
+  &__result {
+    font-weight: bold;
   }
 }
 </style>
