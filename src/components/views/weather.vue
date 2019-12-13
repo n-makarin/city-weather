@@ -1,28 +1,26 @@
 <template>
   <div class="weather">
-    <div class="weather__description">
-      {{ description }}
+    <div class="weather__description weather__item">
+      Description: {{ description }}
     </div>
-    <div class="weather__rain">
-      {{ rain }}
+    <div class="weather__rain weather__item">
+      <span>Rain: </span>
+      <span>{{ rain ? rain : 'no' }}</span>
     </div>
-    <div class="weather__snow">
-      {{ snow }}
+    <div class="weather__snow weather__item">
+      <span>Snow: </span>
+      <span>{{ snow ? snow : 'no' }}</span>
     </div>
-    <div class="weather__temp">
-      <div class="weather__feels-like">
-        {{ temp.feelsLike }}
-      </div>
-      <div class="weather__tepm">
-        {{ temp.tepm }}
-      </div>
+    <div class="weather__temp weather__item">
+      <div class="weather__real">Temperature: {{ temp.tepm }}</div>
+      <div class="weather__feels-like">Feels like: {{ temp.feelsLike }}</div>
     </div>
-    <div class="weather__wind">
+    <div class="weather__wind weather__item">
       <div class="weather__feels-speed">
-        {{ wind.speed }}
+        Wind speed: {{ wind.speed }}
       </div>
       <div class="weather__dir">
-        {{ wind.dir }}
+        Wind direction: {{ wind.dir }}
       </div>
     </div>
   </div>
@@ -58,4 +56,15 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
+.weather {
+  &__item {
+    margin-bottom: 5px;
+    line-height: 1.5;
+  }
+  &__description {
+    &::first-letter {
+      text-transform: uppercase
+    }
+  }
+}
 </style>
