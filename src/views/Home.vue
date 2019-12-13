@@ -7,7 +7,7 @@
 
 <script>
 import HelloWorld from '@/components/HelloWorld.vue'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'home',
@@ -16,13 +16,19 @@ export default {
   },
   computed: {
     ...mapGetters({
-      city: 'city/data'
+      city: 'city/data',
+      weather: 'weather/data'
     })
   },
-  mounted () {
-    this.$nextTick(async () => {
-      await this.$store.dispatch('city/getCityNameByCoordinates')
+  methods: {
+    ...mapActions({
+      getCityNameByCoordinates: 'city/getCityNameByCoordinates',
+      getCurrentByCityName: 'weather/getCurrentByCityName'
     })
+  },
+  async mounted () {
+    await this.getCityNameByCoordinates()
+    await this.getCurrentByCityName(this.city)
   }
 }
 </script>
