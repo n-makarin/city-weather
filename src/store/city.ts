@@ -24,6 +24,12 @@ export default {
   },
   actions: {
     /**
+     * Set city name to store
+     */
+    set ({ commit }: any, city: string): void {
+      commit('SET', city)
+    },
+    /**
      * Get current user coordinates
      * and set them to store
      */
@@ -39,11 +45,11 @@ export default {
     /**
      * Get city name by coordinates from store
      */
-    async getCityNameByCoordinates ({ commit, dispatch, getters }: any): Promise<void> {
+    async getCityNameByCoordinates ({ dispatch, getters }: any): Promise<void> {
       await dispatch('getCoordinates')
       const rawData = await googleMaps.getData(getters.coordinates)
       const city: string = getCity(rawData)
-      commit('SET', city)
+      dispatch('set', city)
     }
   },
   getters: {
