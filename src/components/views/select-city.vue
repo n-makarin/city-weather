@@ -2,7 +2,7 @@
   <div class="select-city">
     <VueGooglePlaces
       class="select-city__input"
-      api-key="AIzaSyCekJlCBYHrhLO_hg500FOVcZQ4_iBoosI"
+      :api-key="apiKey"
       types="(cities)"
       placeholder="Input your place"
       @placechanged="getAddressData"
@@ -13,13 +13,15 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { googleApiKey } from '@/config'
 
 export default Vue.extend({
   components: {
   },
   data () {
     return {
-      address: ''
+      address: '',
+      apiKey: googleApiKey
     }
   },
   watch: {
