@@ -1,5 +1,9 @@
 <template>
   <div class="home">
+    <div class="home__select-city">
+      <div class="home__select-title">Choose city:</div>
+      <select-city class="home__select" />
+    </div>
     <div class="home__data">
       <div class="home__city">
         <span>City: </span>
@@ -22,11 +26,13 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 import Weather from '@/components/views/weather.vue'
+import SelectCity from '@/components/views/select-city.vue'
 
 export default {
   name: 'home',
   components: {
-    Weather
+    Weather,
+    SelectCity
   },
   computed: {
     ...mapGetters({
@@ -49,8 +55,16 @@ export default {
 
 <style lang="scss" scoped>
 .home {
+  padding: 0 20%;
+  &__select-city {
+    margin-bottom: 25px;
+    padding:  15px 0;
+    border-bottom: 1px solid rgb(206, 206, 206);
+  }
+  &__select-title {
+    font-size: 26px;
+  }
   &__data {
-    padding: 0 20%;
   }
   &__city {
     font-size: 26px;
