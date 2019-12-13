@@ -2,12 +2,13 @@
  * Doc: https://openweathermap.org/
  */
 import axios from 'axios'
+import { openweatherApiKey } from '@/config'
 
 const endpoint: string = 'https://api.openweathermap.org/'
 const path = 'data/2.5/'
 const query: string = 'find?q='
 const units: string = 'metric'
-const apiKey = 'a61d02c437c46d28055a9d7248221c39'
+const apiKey = openweatherApiKey
 
 const openWeather: any = {
   /**
