@@ -1,18 +1,27 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <div class="home__data">
+      <div class="home__city">City: {{ city }}</div>
+      <weather
+        :description="weather.description"
+        :rain="weather.rain"
+        :snow="weather.snow"
+        :temp="weather.temp"
+        :wind="weather.wind"
+        class="home__weather"
+      />
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue'
 import { mapGetters, mapActions } from 'vuex'
+import Weather from '@/components/views/weather.vue'
 
 export default {
   name: 'home',
   components: {
-    HelloWorld
+    Weather
   },
   computed: {
     ...mapGetters({
