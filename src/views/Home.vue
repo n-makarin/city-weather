@@ -6,7 +6,6 @@
     </div>
     <div class="home__data">
       <div class="home__city">
-        <span>City: </span>
         <span class="home__city-name">{{ city }}</span>
       </div>
       <weather
@@ -62,11 +61,12 @@ export default {
   padding: 0 20%;
   &__select-city {
     margin-bottom: 25px;
-    padding:  15px 0;
+    padding:  15px 0 20px 0;
     border-bottom: 1px solid rgb(206, 206, 206);
   }
   &__select-title {
-    font-size: 26px;
+    font-size: 24px;
+    margin-bottom: 10px;
   }
   &__data {
   }
