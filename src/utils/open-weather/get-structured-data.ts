@@ -5,13 +5,16 @@ import * as Types from '@/types/api/open-weather'
 export default function (rawData: any): Types.Weather|void {
   const data: any = rawData.list[0]
   if (!data) { return }
+  const feelsLike: number = Number(data.main.feels_like)
+  const temp: number = Number(data.main.temp)
+
   let result: Types.Weather = {
     description: data.weather[0].description,
     rain: data.rain ? data.rain : false,
     snow: data.snow ? data.rain : false,
     temp: {
-      feelsLike: data.main.feels_like,
-      tepm: data.main.temp
+      feelsLike: Math.floor(feelsLike),
+      tepm: Math.floor(temp)
     },
     wind: {
       speed: data.wind.speed,
