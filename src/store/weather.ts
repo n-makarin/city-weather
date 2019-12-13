@@ -35,8 +35,7 @@ export default {
         commit('SET', null)
         return
       }
-      const weather: OpenWeatherTypes.Weather = getStructuredData(rawData)
-      commit('SET', weather)
+      commit('SET', getStructuredData(rawData))
     }
   },
   getters: {
