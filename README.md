@@ -1,4 +1,10 @@
-# city-weather
+# City weather
+
+[📋 Task description](https://docs.google.com/document/d/1ZjHojZbrXSvOh0uPjVfdkvUyZ2H0h3Wu8MUlve1lu4o/edit)
+
+
+Для запуска приложения забудте указать googleApiKey и openweatherApiKey в src\config.ts
+
 
 ## Project setup
 ```
