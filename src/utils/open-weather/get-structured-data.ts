@@ -10,8 +10,8 @@ export default function (rawData: any): Types.Weather|void {
 
   let result: Types.Weather = {
     description: data.weather[0].description,
-    rain: data.rain ? data.rain : false,
-    snow: data.snow ? data.rain : false,
+    rain: !!data.rain,
+    snow: !!data.snow,
     temp: {
       feelsLike: Math.floor(feelsLike),
       tepm: Math.floor(temp)
