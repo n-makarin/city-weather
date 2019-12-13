@@ -46,9 +46,13 @@ export default {
       getCurrentByCityName: 'weather/getCurrentByCityName'
     })
   },
+  watch: {
+    async city (newValue) {
+      await this.getCurrentByCityName(newValue)
+    }
+  },
   async mounted () {
     await this.getCityNameByCoordinates()
-    await this.getCurrentByCityName(this.city)
   }
 }
 </script>
