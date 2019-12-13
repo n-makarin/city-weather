@@ -2,8 +2,9 @@ import * as Types from '@/types/api/open-weather'
 /**
  * @param rawData {array|undefined}
  */
-export default function (rawData: any): Types.Weather {
+export default function (rawData: any): Types.Weather|void {
   const data: any = rawData.list[0]
+  if (!data) { return }
   let result: Types.Weather = {
     description: data.weather[0].description,
     rain: data.rain ? data.rain : false,
