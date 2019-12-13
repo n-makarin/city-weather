@@ -4,7 +4,7 @@
       class="select-city__input"
       :api-key="apiKey"
       types="(cities)"
-      placeholder="Input your place"
+      placeholder="Choose city"
       @placechanged="getAddressData"
       @noresult="onNoResult"
     />
@@ -51,8 +51,14 @@ export default Vue.extend({
 
   &__input {
     input {
-      width: 300px;
-      padding: 5px;
+      width: 400px;
+      padding: 10px;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: 1px solid rgb(184, 184, 184);
+      font-size: 18px;
+      text-align: center;
     }
   }
 }
