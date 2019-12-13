@@ -1,7 +1,6 @@
 <template>
   <div class="home">
     <div class="home__select-city">
-      <div class="home__select-title">Choose city:</div>
       <select-city class="home__select" />
     </div>
     <div class="home__data">
@@ -62,13 +61,11 @@ export default {
   &__select-city {
     margin-bottom: 25px;
     padding:  15px 0 20px 0;
-    border-bottom: 1px solid rgb(206, 206, 206);
-  }
-  &__select-title {
-    font-size: 24px;
-    margin-bottom: 10px;
+    text-align: center;
   }
   &__data {
+    margin: 0 auto;
+    text-align: center;
   }
   &__city {
     font-size: 26px;
