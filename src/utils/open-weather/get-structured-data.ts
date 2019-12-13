@@ -6,8 +6,8 @@ export default function (rawData: any): Types.Weather {
   const data: any = rawData.list[0]
   let result: Types.Weather = {
     description: data.weather[0].description,
-    rain: data.rain,
-    snow: data.snow,
+    rain: data.rain ? data.rain : false,
+    snow: data.snow ? data.rain : false,
     temp: {
       feelsLike: data.main.feels_like,
       tepm: data.main.temp
