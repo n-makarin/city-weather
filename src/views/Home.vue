@@ -6,6 +6,7 @@
         <span class="home__city-name">{{ city }}</span>
       </div>
       <weather
+        v-if="weather"
         :description="weather.description"
         :rain="weather.rain"
         :snow="weather.snow"
@@ -13,6 +14,7 @@
         :wind="weather.wind"
         class="home__weather"
       />
+      <div class="home__error" v-else>Can't get data</div>
     </div>
   </div>
 </template>
@@ -60,7 +62,8 @@ export default {
       text-transform: uppercase;
     }
   }
-  &__weather {
+  &__error {
+    color: rgb(143, 64, 64);
   }
 }
 </style>
