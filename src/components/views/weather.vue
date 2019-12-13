@@ -11,11 +11,11 @@
       <span>Snow: </span>
       <span>{{ snow ? snow : 'no' }}</span>
     </div>
-    <div class="weather__temp weather__item">
+    <div v-if="temp" class="weather__temp weather__item">
       <div class="weather__real">Temperature: {{ temp.tepm }}</div>
       <div class="weather__feels-like">Feels like: {{ temp.feelsLike }}</div>
     </div>
-    <div class="weather__wind weather__item">
+    <div v-if="wind" class="weather__wind weather__item">
       <div class="weather__feels-speed">
         Wind speed: {{ wind.speed }}
       </div>
