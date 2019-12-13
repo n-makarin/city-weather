@@ -1,7 +1,10 @@
 <template>
   <div class="home">
     <div class="home__data">
-      <div class="home__city">City: {{ city }}</div>
+      <div class="home__city">
+        <span>City: </span>
+        <span class="home__city-name">{{ city }}</span>
+      </div>
       <weather
         :description="weather.description"
         :rain="weather.rain"
@@ -41,3 +44,23 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.home {
+  &__data {
+    padding: 0 20%;
+  }
+  &__city {
+    font-size: 26px;
+    margin-bottom: 15px;
+  }
+  &__city-name {
+    color: rgb(20, 21, 82);
+    &:first-letter {
+      text-transform: uppercase;
+    }
+  }
+  &__weather {
+  }
+}
+</style>
