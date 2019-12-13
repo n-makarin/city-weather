@@ -31,7 +31,10 @@ export default {
      */
     async getCurrentByCityName ({ commit }: any, cityName: string): Promise<void> {
       const rawData = await openWeather.getCurrentByCityName(cityName)
-      if (!rawData || !rawData.cod || rawData.cod !== '200') { return }
+      if (!rawData || !rawData.cod || rawData.cod !== '200') {
+        commit('SET', null)
+        return
+      }
       const weather: OpenWeatherTypes.Weather = getStructuredData(rawData)
       commit('SET', weather)
     }
