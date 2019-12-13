@@ -3,7 +3,7 @@
     <div class="home__select-city">
       <select-city class="home__select" />
     </div>
-    <div class="home__data">
+    <div v-if="!error.visible" class="home__data">
       <div class="home__city">
         <span class="home__city-name">{{ city }}</span>
       </div>
@@ -18,6 +18,7 @@
       />
       <div class="home__error" v-else>Can't get data</div>
     </div>
+    <div class="home__error" v-else>{{ error.message }}</div>
   </div>
 </template>
 
@@ -38,6 +39,14 @@ export default {
       weather: 'weather/data'
     })
   },
+  data () {
+    return {
+      error: {
+        visible: false,
+        message: ''
+      }
+    }
+  },
   methods: {
     ...mapActions({
       getCityNameByCoordinates: 'city/getCityNameByCoordinates',
@@ -46,11 +55,17 @@ export default {
   },
   watch: {
     async city (newValue) {
+      this.error.visible = false
       await this.getCurrentByCityName(newValue)
     }
   },
   async mounted () {
-    await this.getCityNameByCoordinates()
+    try {
+      await this.getCityNameByCoordinates()
+    } catch (error) {
+      this.error.visible = true
+      this.error.message = error || 'No position access'
+    }
   }
 }
 </script>
@@ -79,6 +94,7 @@ export default {
   }
   &__error {
     color: rgb(143, 64, 64);
+    text-align: center;
   }
 }
 </style>
